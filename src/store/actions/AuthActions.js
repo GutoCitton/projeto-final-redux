@@ -23,4 +23,20 @@ export const handleLogin = async(values, dispatch, navigate) => {
 }
 
 
+export const handleLogout = (dispatch, navigate) => {
+
+  localStorage.removeItem('token');
+  delete api.defaults.headers.common['Authorization'];
+  navigate('/login')
+
+  const deslogado = {
+    type: 'SET_LOGOUT',
+    token: null,
+    auth: false,
+    loading: false
+  }
+  dispatch(deslogado)
+}
+
+
 

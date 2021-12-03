@@ -16,6 +16,15 @@ function authReducer(state = INITIAL_STATE, action) {
       }
     }
   }
+  if (action.type === 'SET_LOGOUT') {
+    return {
+      auth: {
+        token: action.token,
+        auth: action.auth,
+        loading: action.loading
+      }
+    }
+  }
   return state
 }
 

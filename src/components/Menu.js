@@ -1,9 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
+import { Link } from 'react-router-dom'
+import { handleLogout } from '../store/actions/AuthActions'
+import { useNavigate } from 'react-router'
 import styles from './Menu.module.css'
 
-const Menu = () => {
+
+
+const Menu = ({dispatch}) => {
+  const navigate = useNavigate()
   // const {handleLogout, auth} = useContext<any>(AuthContext)
   return (
     <nav className={styles.menu}>
@@ -11,10 +17,16 @@ const Menu = () => {
         {/* <li><Link to='/login' onClick={handleLogout}>Login</Link></li> */}
         <li><Link to='/pessoa'>Pessoa</Link></li>
         {/* <li><Link to='/endereco'>Endereço</Link></li> */}
-        {/* <li>{auth && <button onClick={handleLogout} className={styles.btnSair}>Sair</button>}</li> */}
+        <li><button onClick={() => handleLogout(dispatch, navigate)} className={styles.btnSair}>Sair</button></li>
       </ul>
     </nav>
   )
 }
 
-export default Menu;
+
+const mapStateToProps = state => ({
+  auth: state.authReducer.auth
+});
+
+
+export default connect(mapStateToProps)(Menu);
