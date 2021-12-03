@@ -8,16 +8,14 @@ import styles from './Menu.module.css'
 
 
 
-const Menu = ({dispatch}) => {
+const Menu = ({auth, dispatch}) => {
   const navigate = useNavigate()
-  // const {handleLogout, auth} = useContext<any>(AuthContext)
   return (
     <nav className={styles.menu}>
       <ul>
-        {/* <li><Link to='/login' onClick={handleLogout}>Login</Link></li> */}
         <li><Link to='/pessoa'>Pessoa</Link></li>
-        {/* <li><Link to='/endereco'>Endereço</Link></li> */}
-        <li><button onClick={() => handleLogout(dispatch, navigate)} className={styles.btnSair}>Sair</button></li>
+        <li><Link to='/endereco'>Endereço</Link></li>
+        <li>{auth.auth && <button onClick={() => handleLogout(dispatch, navigate)} className={styles.btnSair}>Sair</button>}</li>
       </ul>
     </nav>
   )
