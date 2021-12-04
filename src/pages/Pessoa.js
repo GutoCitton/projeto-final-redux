@@ -5,6 +5,7 @@ import PrintPessoa from "../components/PrintPessoa";
 import styles from './Pessoa.module.css'
 import { connect } from "react-redux";
 import { attPessoas } from "../store/actions/PessoasActions";
+import BtnScrollToTop from "../components/ScrollToTop";
 
 
 const Pessoa = ({pessoas, dispatch}) => {
@@ -92,6 +93,7 @@ const Pessoa = ({pessoas, dispatch}) => {
       </Formik>
     </div>
       <PrintPessoa attList={getListPessoas} setIdEdicao={setIdEdicao}/>
+      <BtnScrollToTop />
     </div>
   )
 }

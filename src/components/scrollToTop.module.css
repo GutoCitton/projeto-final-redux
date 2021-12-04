@@ -1,0 +1,40 @@
+.btnContainer button {
+  position: fixed;
+  font-weight: bold;
+  font-size: 16px;
+  bottom: 70px;
+  right: 75px;
+  width: 51px;
+  height: 51px;
+  border-radius: 47% 53% 49% 51% / 83% 85% 15% 17% ;
+  box-shadow:
+  0px 0px 25px rgba(0, 0, 0, 1.077),
+  0px 0px 35px rgba(0, 0, 0, 1.367),
+  0px 0px 37px rgba(0, 0, 0, 1.505),
+  0px 0px 38px rgba(0, 0, 0, 1.54),
+  0px 0px 31px rgba(0, 0, 0, 1.466),
+  0px 0px 25px rgba(0, 0, 0, 1)
+;
+cursor: pointer;
+}
+
+
+
+.btnContainer button:hover {
+  background-color: black;
+  color: white;
+  transition: 0.4s;
+   box-shadow:
+  0px 0px 25px rgba(0, 0, 0, 1.077),
+  0px 0px 35px rgba(0, 0, 0, 1.367),
+  0px 0px 37px rgba(0, 0, 0, 1.505),
+  0px 0px 38px rgba(0, 0, 0, 1.54),
+  0px 0px 31px rgba(0, 0, 0, 1.466),
+  0px 0px 25px rgba(0, 0, 0, 1)
+}
+
+.btnContainer button:not(:hover) {
+  background-color: white;
+  color: black;
+  transition: 0.4s;
+}

@@ -3,6 +3,7 @@ import { api } from '../api';
 import moment from 'moment';
 import styles from './PrintPessoa.module.css';
 import { connect } from 'react-redux';
+import { scrollToTop } from './ScrollToTop';
 
 
 const PrintPessoa = ({attList, setIdEdicao, pessoas}) => {
@@ -11,6 +12,15 @@ const PrintPessoa = ({attList, setIdEdicao, pessoas}) => {
     await api.delete(`/pessoa/${idPessoa}`);
     await attList();
   }
+
+
+  const editPessoa = (idPessoa) => {
+    setIdEdicao(idPessoa)
+    scrollToTop()
+  }
+
+  
+
 
 
   return (
@@ -24,7 +34,7 @@ const PrintPessoa = ({attList, setIdEdicao, pessoas}) => {
               <p>E-mail:&nbsp;{pessoa.email}</p>
               <div>
                 <button className={styles.btnApagar} onClick={() => deletePessoa(pessoa.idPessoa)}>Apagar</button>
-                <button className={styles.btnApagar} onClick={() => setIdEdicao(pessoa.idPessoa)}>Editar</button>
+                <button className={styles.btnApagar} onClick={() => editPessoa(pessoa.idPessoa)}>Editar</button>
               </div>
             </div>
         </div>
