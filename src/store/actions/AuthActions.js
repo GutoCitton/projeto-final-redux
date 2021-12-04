@@ -27,7 +27,7 @@ export const handleLogout = (dispatch, navigate) => {
 
   localStorage.removeItem('token');
   delete api.defaults.headers.common['Authorization'];
-  navigate('/login')
+  navigate('/')
 
   const deslogado = {
     type: 'SET_LOGOUT',

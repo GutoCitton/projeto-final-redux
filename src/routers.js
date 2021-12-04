@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Pessoa from "./pages/Pessoa";
 import NotFound from './components/NotFoound'
+import Endereco from "./pages/Endereco";
 
 function Routers({auth}) {
 
@@ -26,6 +27,7 @@ function Routers({auth}) {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/pessoa" element={<Pessoa />} />
+            <Route path="/endereco" element={<Endereco />} />
             <Route element={<NotFound />} path='*' />
          </Routes>
         ) : (

@@ -1,40 +1,43 @@
+
 .btnContainer button {
+  right: 100px;
+  bottom: 90px;
+  border-radius: 20px;
   position: fixed;
   font-weight: bold;
   font-size: 16px;
-  bottom: 70px;
-  right: 75px;
-  width: 51px;
-  height: 51px;
-  border-radius: 47% 53% 49% 51% / 83% 85% 15% 17% ;
-  box-shadow:
-  0px 0px 25px rgba(0, 0, 0, 1.077),
-  0px 0px 35px rgba(0, 0, 0, 1.367),
-  0px 0px 37px rgba(0, 0, 0, 1.505),
-  0px 0px 38px rgba(0, 0, 0, 1.54),
-  0px 0px 31px rgba(0, 0, 0, 1.466),
-  0px 0px 25px rgba(0, 0, 0, 1)
-;
-cursor: pointer;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-
-
-.btnContainer button:hover {
-  background-color: black;
-  color: white;
-  transition: 0.4s;
-   box-shadow:
-  0px 0px 25px rgba(0, 0, 0, 1.077),
-  0px 0px 35px rgba(0, 0, 0, 1.367),
-  0px 0px 37px rgba(0, 0, 0, 1.505),
-  0px 0px 38px rgba(0, 0, 0, 1.54),
-  0px 0px 31px rgba(0, 0, 0, 1.466),
-  0px 0px 25px rgba(0, 0, 0, 1)
+.btnContainer button:after {
+  content: "";
+  border-radius: 20px;
+  background-color: #ffe54c;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  height: 100%;
+  top: 7px;
+  left: 7px;
+  transition: 0.2s;
 }
 
-.btnContainer button:not(:hover) {
-  background-color: white;
-  color: black;
-  transition: 0.4s;
+.btnContainer button:hover:after {
+  top: 0px;
+  left: 0px;
+}
+
+@media (min-width: 768px) {
+  .btnContainer button {
+    padding: 13px 50px 13px;
+  }
 }
