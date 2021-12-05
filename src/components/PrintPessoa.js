@@ -34,7 +34,7 @@ const PrintPessoa = ({attList, setIdEdicao, pessoas}) => {
               <p>E-mail:&nbsp;{pessoa.email}</p>
               <div>
                 <button className={styles.btnApagar} onClick={() => deletePessoa(pessoa.idPessoa)}>Apagar</button>
-                <button className={styles.btnApagar} onClick={() => editPessoa(pessoa.idPessoa)}>Editar</button>
+                <button className={styles.btnEditar} onClick={() => editPessoa(pessoa.idPessoa)}>Editar</button>
               </div>
             </div>
         </div>

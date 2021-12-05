@@ -30,7 +30,7 @@ const Endereco = () => {
   })
 
   return (
-    <div>
+    <div className={styles.enderecoPage}>
       <div className={styles.h1EnderecoContainer}>
         <h1 className={styles.h1Endereco}>Endereco</h1>
       </div>
@@ -48,14 +48,14 @@ const Endereco = () => {
         }}
       >
         {props => (
-          <Form>
+          <Form className={styles.boxEndereco}>
             <div className={styles.enderecoContainer}>
               <div className={styles.enderecoBox}>
                 <div>
                   <label htmlFor="cep">Buscar pelo CEP</label>
                   <div>
                     <Field id="cep" name="cep" placeholder="CEP" />
-                    <button  onClick= {() => handleClick(props.values.cep)} >Buscar</button> 
+                    <button className={styles.btnBuscar}   onClick= {() => handleClick(props.values.cep)} >Buscar</button> 
                   </div>
                 </div>
                 <div>

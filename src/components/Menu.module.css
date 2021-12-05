@@ -24,15 +24,23 @@
 
 .btnSair {
   border: none;
-  /* background-color: rgb(25, 25, 25); */
-  padding: 3px 15px;
+  background-color: rgb(25, 25, 25);
+  padding: 5px 15px;
   border-radius: 5px;
-  border: 1px solid #FFF;
-  color: black;
+  color: #FFF;
+  min-width: 80px;
   cursor: pointer;
+  
 }
 
 .btnSair:hover {
   background-color: rgb(255, 0, 0);
   color: black;
+  transition: 0.4s;
+}
+
+.btnSair:not(:hover) {
+  background-color: rgb(25, 25, 25);
+  color: #FFF;
+  transition: 0.45s;
 }

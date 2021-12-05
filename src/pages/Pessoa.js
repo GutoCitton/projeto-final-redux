@@ -39,7 +39,7 @@ const Pessoa = ({pessoas, dispatch}) => {
   };
 
   return (
-    <div>
+    <div className={styles.pessoaPage}>
       <div className={styles.h1PessoaContainer}>
         <h1 className={styles.h1Pessoa}>Pessoa</h1>
       </div>
@@ -81,7 +81,7 @@ const Pessoa = ({pessoas, dispatch}) => {
           </div>
           <div>
             <label htmlFor="cpf">CPF</label>
-            <Field id="cpf" name="cpf" placeholder="CPF" />
+            <Field id="cpf" maxlength='11' name="cpf" placeholder="CPF" />
           </div>
           <div>
             <label htmlFor="email">E-mail</label>
