@@ -6,6 +6,7 @@ import styles from './Pessoa.module.css'
 import { connect } from "react-redux";
 import { attPessoas } from "../store/actions/PessoasActions";
 import BtnScrollToTop from "../components/ScrollToTop";
+import moment from "moment";
 
 
 const Pessoa = ({pessoas, dispatch}) => {
@@ -38,6 +39,55 @@ const Pessoa = ({pessoas, dispatch}) => {
     return null;
   };
 
+  const validaCPF = (cpf) => {
+    let error;
+    if (!cpf) {
+      error = 'Campo Obrigatório'
+    } else if (cpf.length >= 1 && isNaN(cpf)){
+      error = 'Digite um CPF Válido'
+    }
+    return error;
+  }
+
+  const validaEmail = (email) => {
+    let error;
+    const regexEmail = /^[a-z0-9.]+@[a-z0-9]+.[a-z]+.([a-z]+)?$/i;
+    if (!email) {
+      error = 'Campo Obrigatório'
+    } else if (!regexEmail.test(email)) {
+      error ='Insira um email válido'
+    }
+
+    return error;
+  }
+
+  const validaNome = (nome) => {
+    let error;
+    const regexNome = /^([a-zA-Zà-úÀ-Ú]|\s+)+$/;
+    if (!nome) {
+      error = 'Campo Obrigatório'
+    } else if (!regexNome.test(nome)) {
+      error = 'Por favor digite somente letras'
+    }
+
+    return error;
+  }
+
+  const validaData = (data) => {
+    let error;
+    if (!data) {
+      error = 'Campo Obrigatório'
+    } else if (moment().diff(data, 'years') < 18){
+      error = 'Precisa ser maior de idade'
+    }
+    return error;
+  }
+
+
+
+
+  
+
   return (
     <div className={styles.pessoaPage}>
       <div className={styles.h1PessoaContainer}>
@@ -62,34 +112,39 @@ const Pessoa = ({pessoas, dispatch}) => {
               await api.put(`/pessoa/${idEdicao}`, values);
               setIdEdicao(null);
             } else {
-              await api.post('/pessoa', values);
+                await api.post('/pessoa', values);
             }
             setSubmitting(false);
             getListPessoas();
             resetForm();
         }}
-      >
+      >{({ errors }) => (
         <Form className={styles.boxPessoa}>
           <h1>{idEdicao ? 'Edição' : 'Cadastro'}</h1>
           <div>
             <label htmlFor="nome">Nome</label>
-            <Field id="nome" name="nome" placeholder="Nome" />
+            <Field validate={validaNome} id="nome" name="nome" placeholder="Nome" />
+            {errors.nome && <span>{errors.nome}</span>}
           </div>
           <div>
             <label htmlFor="dataNascimento">Data de Nascimento</label>
-            <Field id="dataNascimento" className={styles.dataNascimento} name="dataNascimento" placeholder="Data de Nascimento" type='date' />
+            <Field validate={validaData} id="dataNascimento" className={styles.dataNascimento} name="dataNascimento" placeholder="Data de Nascimento" type='date' />
+            {errors.dataNascimento && <span>{errors.dataNascimento}</span>}
           </div>
-          <div>
+          <div >
             <label htmlFor="cpf">CPF</label>
-            <Field id="cpf" maxlength='11' name="cpf" placeholder="CPF" />
+            <Field validate={validaCPF} id="cpf" maxLength='11' name="cpf" placeholder="CPF" />
+            {errors.cpf && <span>{errors.cpf}</span>}
           </div>
           <div>
             <label htmlFor="email">E-mail</label>
-            <Field id="email" type='email' name="email" placeholder="E-mail"/>
+            <Field validate={validaEmail} id="email" type='email' name="email" placeholder="E-mail"/>
+            {errors.email && <span>{errors.email}</span>}
           </div>
           <FormikContext />
           <button className={styles.btnEnviar} type="submit">Enviar</button>
         </Form >
+      )}
       </Formik>
     </div>
       <PrintPessoa attList={getListPessoas} setIdEdicao={setIdEdicao}/>

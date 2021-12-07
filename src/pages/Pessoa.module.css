@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   width: 400px;
-  height: 450px;
+  height: 500px;
   margin-top: 30px;
   border-radius: 20px;
   border: 2px dashed black;
@@ -41,6 +41,7 @@
 
 .dataNascimento {
   width: 170px;
+  height: 17px;
 }
 
 .btnEnviar {
@@ -62,5 +63,14 @@
   background-color: rgb(25, 25, 25);
   color: #FFF;
   transition: 1s;
+}
+
+.boxPessoa span{
+  position: absolute;
+  margin-top: 55px;
+  color: yellow;
+}
+.boxPessoa div {
+  margin-bottom: 30px;
 }
 
